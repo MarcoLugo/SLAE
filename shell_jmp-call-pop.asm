@@ -4,7 +4,7 @@
 ;
 ; For the SecurityTube Linux Assembly Expert (SLAE) course
 ; Using the JMP-CALL-POP method
-; The resulting shellcode is 29 bytes
+; The resulting shellcode is 28 bytes
 
 global _start
 
@@ -19,9 +19,8 @@ step2:
 	pop ebx ; retrieves it and passes it to EBX, which will act as an argument to execve
 
 	push ebx ; puts the null-terminated shellpath in the stack 
-	lea ecx, [esp] ; retrieves the address of the null-terminated shellpath and assigns it to ECX, an argument for execve
-	; the two previous lines could be replaced by lea ecx, [esp-4] but it yields no size optimization for the shellcode size
-
+	mov ecx, esp ; retrieves the address of the null-terminated shellpath and assigns it to ECX, an argument for execve
+	
 	xor edx, edx ; ; assigns 0x00 to EDX which will also act as an argument for execve
 
 	mov al, 0x0b ; assign 11 to al (eax) as this is the syscall number for execve
