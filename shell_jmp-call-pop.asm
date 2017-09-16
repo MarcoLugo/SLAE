@@ -11,7 +11,7 @@ global _start
 section .text
 _start:
 	xor eax, eax ; assigns 0x00 to EAX
-	push eax ; push 0x00 to stack
+	push eax ; push 0x00 (null byte) to stack
 	jmp step1 ; unconditional jump to step1
 
 step2:
@@ -23,7 +23,7 @@ step2:
 
 	xor edx, edx ; ; assigns 0x00 to EDX which will also act as an argument for execve
 
-	mov al, 0xb ; assign 11 to al (eax) as this is the syscall number for execve
+	mov al, 0x0b ; assign 11 to al (eax) as this is the syscall number for execve
 	int 0x80 ; syscall
 	
 step1:
