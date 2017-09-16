@@ -20,6 +20,7 @@ step2:
 
 	push ebx ; puts the null-terminated shellpath in the stack 
 	lea ecx, [esp] ; retrieves the address of the null-terminated shellpath and assigns it to ECX, an argument for execve
+	; the two previous lines could be replaced by lea ecx, [esp-4] but it yields no size optimization for the shellcode size
 
 	xor edx, edx ; ; assigns 0x00 to EDX which will also act as an argument for execve
 
