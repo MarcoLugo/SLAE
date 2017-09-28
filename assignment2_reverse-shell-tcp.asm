@@ -1,4 +1,4 @@
-; Filename: assiggment1_shell_bind-tcp.nasm
+; Filename: assignment2_reverse-shell-tcp.nasm
 ; Author:  Marco Lugo (SLAE-1031)
 ; Description: spawns reverse shell on TCO port 57005 (0xdead) for ip 192.168.2.15
 ;
