@@ -1,4 +1,4 @@
-; Filename: assiggment1_shell_bind-tcp.nasm
+; Filename: assignment1_shell_bind-tcp.nasm
 ; Author:  Marco Lugo (SLAE-1031)
 ; Description: spawns TCP bind shell on port 57005 (0xdead)
 ;
